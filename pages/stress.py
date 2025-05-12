@@ -1,9 +1,15 @@
 import streamlit as st
+import pandas as pd
+from datetime import datetime
+from os import path
 
 def show():
     if st.button("← 홈으로"):
         st.session_state.page = "home"
         st.rerun()
+
+    now = datetime.now()
+    today = now.date()
 
     st.title("스트레스 테스트")
     score = 0
@@ -28,3 +34,20 @@ def show():
             st.error("스트레스가 높습니다. 휴식이 필요해요.")
         else:
             st.success("스트레스가 낮습니다. 잘 관리하고 있어요.")
+        
+        HowMuchStress = pd.DataFrame([{
+            'date': datetime.today().strftime('%Y-%m-%d'),
+            'stress': score,
+        }])
+
+        if path.exists("stress.csv"):
+            df = pd.read_csv("stress.csv")
+        else:
+            df = pd.DataFrame(columns=['date', 'stress'])
+
+        if str(today) in df['date'].values:
+            st.warning("오늘은 이미 테스트를 실행행하셨어요!")
+        else:
+            df = pd.concat([df, HowMuchStress], ignore_index=True)
+            df.to_csv("stress.csv", index=False)
+            st.success("테스트 결과가 저장되었습니다!")

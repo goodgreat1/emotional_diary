@@ -23,16 +23,20 @@ def show():
 
     if st.button("일기 저장하기"):
         new_entry = pd.DataFrame([{
-            'date': str(today),
-            'context': text,
-            'feels': feel
-        }])
+        'date': str(today),
+        'context': text,
+        'feels': feel
+    }])
 
         if path.exists("diary.csv"):
             df = pd.read_csv("diary.csv")
-            df = pd.concat([df, new_entry], ignore_index=True)
         else:
-            df = new_entry
+            df = pd.DataFrame(columns=['date', 'context', 'feels'])
 
-        df.to_csv("diary.csv", index=False)
-        st.success("일기가 저장되었습니다!")
+        if str(today) in df['date'].values:
+            st.warning("오늘은 이미 일기를 작성하셨어요!")
+        else:
+            df = pd.concat([df, new_entry], ignore_index=True)
+            df.to_csv("diary.csv", index=False)
+            st.success("일기가 저장되었습니다!")
+
