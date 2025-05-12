@@ -12,10 +12,13 @@ if st.session_state.page == "home":
 
     if button_write:
         st.session_state.page = 'diary'
+        st.rerun()
     elif button_stress:
         st.session_state.page = 'stress'
+        st.rerun()
     elif button_graph:
         st.session_state.page = 'analysis'
+        st.rerun()
 
 elif st.session_state.page == "diary":
     import pages.diary as diary
