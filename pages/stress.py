@@ -1,10 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-<<<<<<< HEAD
 from os import path
-=======
->>>>>>> f8cfd541d745436f0d534c5cdab2eeb452875662
 
 def show():
     if st.button("← 홈으로"):
@@ -40,7 +37,6 @@ def show():
         
         HowMuchStress = pd.DataFrame([{
             'date': datetime.today().strftime('%Y-%m-%d'),
-<<<<<<< HEAD
             'stress': score,
         }])
 
@@ -55,13 +51,3 @@ def show():
             df = pd.concat([df, HowMuchStress], ignore_index=True)
             df.to_csv("stress.csv", index=False)
             st.success("테스트 결과가 저장되었습니다!")
-=======
-            'context': "",       
-            'feels': "", 
-            'stress': score,
-        }])
-        df = pd.read_csv("diary.csv")
-        df = pd.concat([df, HowMuchStress], ignore_index=True)
-        
-        df.to_csv("diary.csv", index=False)
->>>>>>> f8cfd541d745436f0d534c5cdab2eeb452875662

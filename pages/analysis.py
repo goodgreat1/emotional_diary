@@ -49,11 +49,11 @@ def show():
     st.line_chart(chart_df)
 
     avg_score = df["score"].mean()
-    st.markdown(f"**📊 평균 감정 점수:** {avg_score:.2f}점")
+    st.markdown(f"**평균 감정 점수:** {avg_score:.2f}점")
 
     '''스트레스점수표'''
     df = pd.read_csv("stress.csv")
     stress_df = df.set_index("date")[["stress"]]
     st.line_chart(stress_df)
     avg_score = df["stress"].mean()
-    st.markdown(f"**📊 평균 감정 점수:** {avg_score:.2f}점")
+    st.markdown(f"**평균 스트레스 점수:** {avg_score:.2f}점")
