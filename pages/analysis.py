@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 from os import path
-
+ 
 def show():
     if st.button("← 홈으로"):
         st.session_state.page = "home"
