@@ -11,7 +11,7 @@ def show():
     now = datetime.now()
     today = now.date()
     y, m, d = str(today).split("-")
-    st.write(f"오늘의 날짜는?????? {y}년 {m}월 {d}일일거임아마도...")
+    st.write(f"오늘의 날짜는 {y}년 {m}월 {d}일입니다!")
 
     feel = st.selectbox(
         "오늘의 기분은 어땠나요?",
