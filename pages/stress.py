@@ -46,7 +46,7 @@ def show():
             df = pd.DataFrame(columns=['date', 'stress'])
 
         if str(today) in df['date'].values:
-            st.warning("오늘은 이미 테스트를 실행행하셨어요!")
+            st.warning("오늘은 이미 테스트를 실행하셨어요!")
         else:
             df = pd.concat([df, HowMuchStress], ignore_index=True)
             df.to_csv("stress.csv", index=False)
