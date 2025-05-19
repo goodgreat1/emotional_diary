@@ -10,7 +10,8 @@ def show():
 
     now = datetime.now()
     today = now.date()
-
+ 
+'''스트레스 테스트하는거'''
     st.title("스트레스 테스트")
     score = 0
     score += st.slider("1. 예상 밖의 일 때문에 속상한 적은 얼마나 있었나요?", 0, 10, 5)
@@ -28,6 +29,7 @@ def show():
 
     submit = st.button("스트레스 결과 보기")
 
+'''스트레스 판별'''
     if submit:
         st.write("총 점수:", score)
         if score >= 50:
@@ -39,7 +41,8 @@ def show():
             'date': datetime.today().strftime('%Y-%m-%d'),
             'stress': score,
         }])
-
+     
+'''결과 존재 확인하고 없으면 저장하는거'''
         if path.exists("stress.csv"):
             df = pd.read_csv("stress.csv")
         else:
