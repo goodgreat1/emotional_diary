@@ -9,7 +9,8 @@ def show():
         st.rerun()
 
     st.title("감정 & 일기 달력")
-
+ 
+ '''db 존재하는지 확인'''
     if not path.exists("diary.csv"):
         st.info("아직 작성된 일기가 없습니다. 홈에서 일기를 작성해보세요!")
         return
@@ -28,11 +29,13 @@ def show():
         st.write(f"**내용:** {entry['context']}")
     else:
         st.warning("이 날짜에는 작성된 일기가 없습니다.")
-
+     
+'''일기 쓴 날짜 보여주는거'''
     st.markdown("### 이 날에 일기를 작성하셨어요!")
     diary_dates = sorted(df["date"].dt.date.unique())
     st.write(", ".join(str(d) for d in diary_dates))
 
+'''그래프그려주는거'''
     st.markdown("### 감정 점수 변화 통계")
 
     emoji_to_score = {
